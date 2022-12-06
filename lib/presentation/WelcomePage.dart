@@ -1,3 +1,4 @@
+import 'package:bmi/presentation/BmiCalculator.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -20,13 +21,18 @@ class WelcomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           Text('Body mass index (BMI) is a value derived from the mass (weight) '
               'and height of a person. The BMI is defined as the body mass divided by '
               'the square of the body height, and is expressed in units of kg/m2, '
               'resulting from mass in kilograms and height in metres.'),
         TextButton(
-          onPressed: null,
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const BmiCalculator()),
+            );
+          },
           child: Text('Open BMI Calculator', style: TextStyle(fontSize: 20)),
         ),
         ],
