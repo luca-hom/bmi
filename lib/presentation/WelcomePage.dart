@@ -12,7 +12,6 @@ class WelcomePage extends StatelessWidget {
       appBar: BaseAppBar(
         title: Text('Welcome Page'),
         appBar: AppBar(),
-        widgets: <Widget>[Icon(Icons.more_vert)],
       ),
       // body is the majority of the screen.
       body: Column(

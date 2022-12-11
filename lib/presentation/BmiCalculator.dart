@@ -11,8 +11,9 @@ class BmiCalculator extends StatelessWidget {
         appBar: BaseAppBar(
           title: Text('BMI Calculator'),
           appBar: AppBar(),
-          widgets: <Widget>[Icon(Icons.more_vert)],
         ),
-        body: Container());
+        body: Container(
+
+        ));
   }
 }
