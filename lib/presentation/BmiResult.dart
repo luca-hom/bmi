@@ -1,4 +1,5 @@
 
+import 'package:bmi/application/BmiUtil.dart';
 import 'package:flutter/cupertino.dart';
 
 class BmiResult extends StatelessWidget {
@@ -12,6 +13,10 @@ class BmiResult extends StatelessWidget {
 
     debugPrint('weight: $weight');
     debugPrint('height: $height');
+
+    var result = BmiUtil.bmiUtilString(height, weight).getBMI();
+
+    debugPrint('result: $result');
 
     // TODO: implement build
     throw UnimplementedError();
