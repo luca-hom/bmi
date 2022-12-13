@@ -1,3 +1,5 @@
+import 'package:bmi/presentation/BmiCalculator.dart';
+import 'package:bmi/presentation/WelcomePage.dart';
 import 'package:flutter/material.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -15,7 +17,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title,
       actions: <Widget>[
         PopupMenuButton<String>(
-          onSelected: handleClick,
+          onSelected: (choice) => handleClick(choice, context),
           itemBuilder: (BuildContext context) {
             return {'Home', 'Calculator', 'Rating', 'History', 'Settings'}.map((String choice) {
               return PopupMenuItem<String>(
@@ -29,12 +31,17 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  //TODO: Logic to switch to other screens -> NavService?
-  void handleClick(String value) {
+  void handleClick(String value, BuildContext context) {
     switch (value) {
       case 'Home':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => WelcomePage())
+        );
         break;
       case 'Calculator':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BmiCalculator())
+        );
         break;
       case 'Rating':
         break;
@@ -46,5 +53,5 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => new Size.fromHeight(appBar.preferredSize.height);
+  Size get preferredSize => Size.fromHeight(appBar.preferredSize.height);
 }
