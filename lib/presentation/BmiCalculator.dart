@@ -1,4 +1,4 @@
-
+import 'package:bmi/presentation/BmiResult.dart';
 import 'package:flutter/material.dart';
 
 import 'BaseAppBar.dart';
@@ -8,6 +8,9 @@ class BmiCalculator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var weightController = TextEditingController();
+    var heightController = TextEditingController();
+
     return Scaffold(
         appBar: BaseAppBar(
           title: Text('BMI Calculator'),
@@ -19,6 +22,7 @@ class BmiCalculator extends StatelessWidget {
               child: Column(
                 children: [
                   TextFormField(
+                    controller: weightController,
                     decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'Enter Weight (kg)'
@@ -26,6 +30,7 @@ class BmiCalculator extends StatelessWidget {
                     keyboardType: TextInputType.number,
                   ),
                   TextFormField(
+                    controller: heightController,
                     decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'Enter Height (cm)'
@@ -43,11 +48,17 @@ class BmiCalculator extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(
-                        onPressed: () => {},
+                        onPressed: () => {
+                          weightController.clear(), heightController.clear()
+                        },
                         child: Text('Clear Input'),
                       ),
                       ElevatedButton(
-                        onPressed: () => {},
+                        onPressed: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => BmiResult(weight: weightController.text, height: heightController.text)))
+                        },
                         child: Text('Calculate BMI'),
                       )
                     ]
