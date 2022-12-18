@@ -1,4 +1,5 @@
 import 'package:bmi/presentation/BmiCalculator.dart';
+import 'package:bmi/presentation/BmiRatingLegend.dart';
 import 'package:bmi/presentation/WelcomePage.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         PopupMenuButton<String>(
           onSelected: (choice) => handleClick(choice, context),
           itemBuilder: (BuildContext context) {
-            return {'Home', 'Calculator', 'Rating', 'History', 'Settings'}.map((String choice) {
+            return {'Home', 'Calculator', 'Ratings', 'History', 'Settings'}.map((String choice) {
               return PopupMenuItem<String>(
                 value: choice,
                 child: Text(choice),
@@ -43,7 +44,10 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
             context, MaterialPageRoute(builder: (context) => BmiCalculator())
         );
         break;
-      case 'Rating':
+      case 'Ratings':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BmiRatingLegend())
+        );
         break;
       case 'History':
         break;
