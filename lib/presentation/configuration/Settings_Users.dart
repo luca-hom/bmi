@@ -23,6 +23,7 @@ class _SettingsUserState extends State<Settings_Users> {
     super.initState();
     _loadUsers();
     _loadActiveUser();
+
   }
 
   Future<void> _loadUsers() async {
@@ -71,28 +72,36 @@ class _SettingsUserState extends State<Settings_Users> {
           appBar: AppBar(),
         ), // body is the majority of the screen.
         body: Container(
+            alignment: Alignment.center,
             child: Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    TextFormField(
-                      readOnly: true,
-                      initialValue: _activeUser,
-                      decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Active User:',
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('Active User: '),
+                        SizedBox(width: 20),
+                        DropdownButton(
+                            value: _activeUser,
+                            items: _userList?.map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String> (
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              setState(() {
+                                _saveActiveUser(value!);
+                                _loadActiveUser();
+                              });
+                            }),
+                      ]
+
                     ),
-                    DropdownButton(
-                        items: _userList?.map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String> (
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (String? value) {
-                          _saveActiveUser(value!);
-                          _loadActiveUser();
-                        }),
+                    SizedBox(height: 50),
                     ElevatedButton(onPressed: () => showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
