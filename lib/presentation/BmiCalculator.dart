@@ -55,9 +55,11 @@ class BmiCalculator extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () => {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => BmiResult(weight: weightController.text, height: heightController.text)))
+                          if (weightController.text != "" && heightController.text != "") {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => BmiResult(weight: weightController.text, height: heightController.text)))
+                          }
                         },
                         child: Text('Calculate BMI'),
                       )

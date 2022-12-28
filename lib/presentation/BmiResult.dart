@@ -8,6 +8,8 @@ import 'BaseAppBar.dart';
 class BmiResult extends StatelessWidget {
   const BmiResult({super.key, required this.weight, required this.height});
 
+  //TODO: change BmiResult to StatefulWidget use SharedPreference ActiveUser
+
   final String weight;
   final String height;
 
