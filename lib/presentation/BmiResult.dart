@@ -2,28 +2,46 @@
 import 'package:bmi/application/BmiUtil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'BaseAppBar.dart';
 
-class BmiResult extends StatelessWidget {
+class BmiResult extends StatefulWidget {
   const BmiResult({super.key, required this.weight, required this.height});
-
-  //TODO: change BmiResult to StatefulWidget use SharedPreference ActiveUser
-
   final String weight;
   final String height;
 
   @override
+  State<StatefulWidget> createState() => _BmiResultState();
+}
+
+class _BmiResultState extends State<BmiResult> {
+  String? _activeUser = "placeholder";
+
+  @override
+  void initState() {
+    super.initState();
+    _loadActiveUser();
+  }
+
+  Future<void> _loadActiveUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _activeUser = prefs.getString('active_user');
+      print('active User: $_activeUser');
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
 
-    debugPrint('weight: $weight');
-    debugPrint('height: $height');
+    debugPrint('weight: $widget.weight');
+    debugPrint('height: $widget.height');
 
-    var result = BmiUtil.bmiUtilString(height, weight).getBMI();
-
+    var result = BmiUtil.bmiUtilString(widget.height, widget.weight).getBMI();
     debugPrint('result: $result');
 
-    var resultRating = BmiUtil.bmiUtilString(height, weight).getRating();
+    var resultRating = BmiUtil.bmiUtilString(widget.height, widget.weight).getRating();
     debugPrint('resultRating: $resultRating');
 
 
@@ -39,15 +57,15 @@ class BmiResult extends StatelessWidget {
               children: [
                 TextFormField(
                   readOnly: true,
-                  initialValue: weight,
+                  initialValue: widget.weight,
                   decoration: const InputDecoration(
-                      border: UnderlineInputBorder(),
-                      labelText: 'Weight (kg)',
+                    border: UnderlineInputBorder(),
+                    labelText: 'Weight (kg)',
                   ),
                 ),
                 TextFormField(
                   readOnly: true,
-                  initialValue: height,
+                  initialValue: widget.height,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Height (cm)',
@@ -69,13 +87,19 @@ class BmiResult extends StatelessWidget {
                     labelText: 'BMI Rating',
                   ),
                 ),
+                TextFormField(
+                  readOnly: true,
+                  controller: TextEditingController(text: _activeUser),
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Active User',
+                  ),
+                ),
               ],
             ),
           )
         ],
       ),
     );
-
   }
-
 }
