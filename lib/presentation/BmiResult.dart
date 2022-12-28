@@ -95,6 +95,16 @@ class _BmiResultState extends State<BmiResult> {
                     labelText: 'Active User',
                   ),
                 ),
+                SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ElevatedButton(onPressed: () => {}, child: Text('Save my BMI Data')),
+                    SizedBox(width: 20),
+                    ElevatedButton(onPressed: () => {}, child: Text('Show BMI Details'))
+                  ],
+                )
               ],
             ),
           )
