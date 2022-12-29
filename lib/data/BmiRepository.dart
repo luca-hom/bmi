@@ -1,5 +1,3 @@
-
-
 import 'package:bmi/domain/BmiEntry.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -24,7 +22,7 @@ class BmiRepository {
   }
 
   Future _createDB(Database db, int version) async {
-    await db.execute('CREATE TABLE bmiEntries(user TEXT PRIMARY KEY, value DOUBLE, date TEXT)');
+    await db.execute('CREATE TABLE bmiEntries(id INTEGER PRIMARY KEY AUTOINCREMENT,user TEXT, value DOUBLE, date TEXT)');
   }
 
   Future close() async {
@@ -43,6 +41,7 @@ class BmiRepository {
 
     return List.generate(maps.length, (i) {
       return BmiEntry(
+          id: maps[i]['id'],
           user: maps[i]['user'],
           value: maps[i]['value'],
           date: maps[i]['date']
@@ -59,6 +58,7 @@ class BmiRepository {
     );
     return List.generate(maps.length, (i) {
       return BmiEntry(
+          id: maps[i]['id'],
           user: maps[i]['user'],
           value: maps[i]['value'],
           date: maps[i]['date']
@@ -79,6 +79,28 @@ class BmiRepository {
     whereArgs: [user]
     );
   }
+
+  Future<int> getNextEntryId() async {
+    final db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      'bmiEntries'
+    );
+    var list =  List.generate(maps.length, (i) {
+      return BmiEntry(
+          id: maps[i]['id'],
+          user: maps[i]['user'],
+          value: maps[i]['value'],
+          date: maps[i]['date']
+      );
+    });
+    if(list.isEmpty){
+      return 1;
+    }
+    else {
+      return (list.last.id+1);
+    }
+
+}
 
 
 }

@@ -1,9 +1,11 @@
 class BmiEntry {
+  final int id;
   final String user;
   final double value;
   final String date;
 
   const BmiEntry({
+    required this.id,
     required this.user,
     required this.value,
     required this.date,
@@ -11,6 +13,7 @@ class BmiEntry {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'user': user,
       'value': value,
       'date': date,
@@ -19,7 +22,7 @@ class BmiEntry {
 
   @override
   String toString() {
-    return 'BmiEntry{user: $user, value: $value, date: $date}';
+    return 'BmiEntry{id: $id, user: $user, value: $value, date: $date}';
   }
 }
 

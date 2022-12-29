@@ -1,8 +1,9 @@
 import 'package:bmi/data/BmiRepository.dart';
 import 'package:bmi/domain/BmiEntry.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
 
 import 'BaseAppBar.dart';
 
@@ -14,13 +15,14 @@ class BmiHistory extends StatefulWidget {
 }
 
 class _BmiHistoryState extends State<BmiHistory>{
-  String? _activeUser = "NULL";
-  late List<BmiEntry> _bmiEntries;
+  String? _activeUser;
+  List<BmiEntry> _bmiEntries = [];
+
 
   @override
   void initState() {
     super.initState();
-    _loadData();
+      _loadData();
   }
 
   Future<void> _loadData() async {
@@ -28,24 +30,50 @@ class _BmiHistoryState extends State<BmiHistory>{
     setState(() {
       _activeUser = prefs.getString('active_user');
     });
-    _bmiEntries = await BmiRepository.instance.bmiEntriesForUser(_activeUser!);
+    if (_activeUser != null) {
+      _bmiEntries = await BmiRepository.instance.bmiEntriesForUser(_activeUser!);
+    }
+
   }
   @override
   Widget build(BuildContext context) {
-    debugPrint('$_activeUser');
-    for (var element in _bmiEntries) {
-      debugPrint("${element.value}, ${element.date}");
-    }
 
     return Scaffold(
       appBar: BaseAppBar(
         title: Text('BMI History of $_activeUser'),
         appBar: AppBar(),
       ),
-      body: Column(
-        children: [
-        ],
-      ),
+      body: Container(
+        child: Padding (
+          padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+          child:
+          Column(
+            children: [
+              SfCartesianChart(
+                  primaryXAxis: NumericAxis(
+                      isVisible: false
+                  ),
+                series: [
+                  LineSeries(
+                      dataSource: _bmiEntries,
+                      dashArray: <double>[5,5],
+                      xValueMapper: (BmiEntry data, _) => DateTime.parse(data.date).millisecondsSinceEpoch,
+                      yValueMapper: (BmiEntry data, _) => data.value
+                  )
+                ],
+              ),
+              ElevatedButton(onPressed: () async => {
+                await BmiRepository.instance.deleteUserBmiEntries(_activeUser!),
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("Deleted to your History"),
+                )),
+                _loadData()
+              }, child: Text('Delete History')),
+            ],
+          ),
+        )
+      )
+
     );
   }
 }

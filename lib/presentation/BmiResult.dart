@@ -104,8 +104,13 @@ class _BmiResultState extends State<BmiResult> {
                   children: [
                     ElevatedButton(onPressed: () async => {
                       await BmiRepository.instance.insertBmiEntry(
-                        BmiEntry(user: _activeUser!, value: result, date: DateTime.now().toIso8601String())
-                      )
+                        BmiEntry(id : await BmiRepository.instance.getNextEntryId(),
+                            user: _activeUser!,
+                            value: result, date: DateTime.now().toIso8601String())
+                      ),
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Saved to your History"),
+                    )),
                     }, child: Text('Save my BMI Data')),
                     SizedBox(width: 20),
                     ElevatedButton(onPressed: () => {}, child: Text('Show BMI Details'))
