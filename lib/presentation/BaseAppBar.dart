@@ -2,6 +2,7 @@ import 'package:bmi/presentation/BmiCalculator.dart';
 import 'package:bmi/presentation/BmiRatingLegend.dart';
 import 'package:bmi/presentation/WelcomePage.dart';
 import 'package:bmi/presentation/configuration/Settings.dart';
+import 'package:bmi/presentation/BmiHistory.dart';
 import 'package:flutter/material.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -51,6 +52,9 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         );
         break;
       case 'History':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BmiHistory())
+        );
         break;
       case 'Settings':
         Navigator.push(

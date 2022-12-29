@@ -1,9 +1,11 @@
 
 import 'package:bmi/application/BmiUtil.dart';
+import 'package:bmi/data/BmiRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../domain/BmiEntry.dart';
 import 'BaseAppBar.dart';
 
 class BmiResult extends StatefulWidget {
@@ -100,7 +102,11 @@ class _BmiResultState extends State<BmiResult> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ElevatedButton(onPressed: () => {}, child: Text('Save my BMI Data')),
+                    ElevatedButton(onPressed: () async => {
+                      await BmiRepository.instance.insertBmiEntry(
+                        BmiEntry(user: _activeUser!, value: result, date: DateTime.now().toIso8601String())
+                      )
+                    }, child: Text('Save my BMI Data')),
                     SizedBox(width: 20),
                     ElevatedButton(onPressed: () => {}, child: Text('Show BMI Details'))
                   ],
