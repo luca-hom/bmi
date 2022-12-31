@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../domain/BmiEntry.dart';
 import 'BaseAppBar.dart';
+import 'BmiRatingDetail.dart';
 
 class BmiResult extends StatefulWidget {
   const BmiResult({super.key, required this.weight, required this.height});
@@ -83,7 +84,7 @@ class _BmiResultState extends State<BmiResult> {
                 ),
                 TextFormField(
                   readOnly: true,
-                  initialValue: resultRating.toString() ,
+                  initialValue: Rating.getTitle(resultRating, context),
                   decoration: InputDecoration(
                     border: const UnderlineInputBorder(),
                     labelText: AppLocalizations.of(context)!.bmiResultTextRating,
@@ -113,7 +114,9 @@ class _BmiResultState extends State<BmiResult> {
                     )),
                     }, child: Text(AppLocalizations.of(context)!.bmiResultBtnSaveBMI)),
                     SizedBox(width: 20),
-                    ElevatedButton(onPressed: () => {}, child: Text(AppLocalizations.of(context)!.bmiResultBtnDetails))
+                    ElevatedButton(onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => BmiRatingDetail(rating: resultRating)))
+                    }, child: Text(AppLocalizations.of(context)!.bmiResultBtnDetails))
                   ],
                 )
               ],

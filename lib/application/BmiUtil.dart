@@ -1,6 +1,7 @@
 import 'dart:core';
 import 'dart:math';
-
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BmiUtil {
 
@@ -61,8 +62,36 @@ enum Rating {
   final double low;
   final double high;
 
-   static List<Rating> getDescriptions() {
+   static List<Rating> getRatings() {
      return Rating.values;
    }
+
+   static String? getDescription(Rating rating, BuildContext context) {
+     switch (rating) {
+       case UNDERWEIGHT_VERY_SEVERELY: return AppLocalizations.of(context)!.bmi0Description;
+       case UNDERWEIGHT_SEVERELY: return AppLocalizations.of(context)!.bmi1Description;
+       case UNDERWEIGHT_MODERATELY: return AppLocalizations.of(context)!.bmi2Description;
+       case UNDERWEIGHT_SLIGHTLY: return AppLocalizations.of(context)!.bmi3Description;
+       case NORMAL: return AppLocalizations.of(context)!.bmi4Description;
+       case OVERWEIGHT: return AppLocalizations.of(context)!.bmi5Description;
+       case OBESE_MODERATELY: return AppLocalizations.of(context)!.bmi6Description;
+       case OBESE_SEVERELY: return AppLocalizations.of(context)!.bmi7Description;
+       case OBESE_VERY_SEVERELY: return AppLocalizations.of(context)!.bmi8Description;
+     }
+   }
+
+  static String? getTitle(Rating rating, BuildContext context) {
+    switch (rating) {
+      case UNDERWEIGHT_VERY_SEVERELY: return AppLocalizations.of(context)!.bmi0Title;
+      case UNDERWEIGHT_SEVERELY: return AppLocalizations.of(context)!.bmi1Title;
+      case UNDERWEIGHT_MODERATELY: return AppLocalizations.of(context)!.bmi2Title;
+      case UNDERWEIGHT_SLIGHTLY: return AppLocalizations.of(context)!.bmi3Title;
+      case NORMAL: return AppLocalizations.of(context)!.bmi4Title;
+      case OVERWEIGHT: return AppLocalizations.of(context)!.bmi5Title;
+      case OBESE_MODERATELY: return AppLocalizations.of(context)!.bmi6Title;
+      case OBESE_SEVERELY: return AppLocalizations.of(context)!.bmi7Title;
+      case OBESE_VERY_SEVERELY: return AppLocalizations.of(context)!.bmi8Title;
+    }
+  }
 
 }

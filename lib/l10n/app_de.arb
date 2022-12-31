@@ -2,6 +2,7 @@
   "baseAppBarWelcomePage": "Willkommensseite",
   "baseAppBarBMICalculator": "BMI-Rechner",
   "baseAppBarBMIResult": "BMI-Ergebnis",
+  "baseAppBarBMIHistoryDotMenu": "BMI-Verlauf",
   "baseAppBarBMIHistory": "{NAME}'s BMI-Verlauf",
   "@baseAppBarBMIHistory": {
     "description": "BMI History Bar mit Ihrem Namen",
@@ -11,6 +12,28 @@
   },
   "baseAppBarSettings": "Einstellungen",
   "baseAppBarSettingsUser": "Benutzereinstellungen",
+  "baseAppBarBMIRatingLegend": "Alle BMI-Bewertungen",
+  "baseAppBarBMIRatingDetail": "BMI Detail",
+
+  "bmi0Title": "Sehr starkes Untergewicht",
+  "bmi0Description": "BMI-Wert unter 15,0",
+  "bmi1Title": "Stark untergewichtig",
+  "bmi1Description": "BMI-Wert zwischen 15,0 und 16,0",
+  "bmi2Title": "Mäßig untergewichtig",
+  "bmi2Description": "BMI-Wert zwischen 16,0 und 17,0",
+  "bmi3Title": "Gering untergewichtig",
+  "bmi3Description": "BMI-Wert zwischen 17,0 und 18,5",
+  "bmi4Title": "Normal",
+  "bmi4Description": "BMI-Wert zwischen 18,5 und 25,0",
+  "bmi5Title": "Übergewichtig",
+  "bmi5Description": "BMI-Wert zwischen 25,0 und 30,0",
+  "bmi6Title": "Mäßig fettleibig",
+  "bmi6Description": "BMI-Wert zwischen 30,0 und 35,0",
+  "bmi7Title": "Starkes Übergewicht",
+  "bmi7Description": "BMI-Wert zwischen 35,0 und 40,0",
+  "bmi8Title": "Sehr stark übergewichtig",
+  "bmi8Description": "BMI-Wert über 40,0",
+
 
   "welcomePageBtn": "BMI-Rechner öffnen",
   "welcomePageText": "Der Body-Mass-Index (BMI) ist ein Wert, der sich aus der Masse (Gewicht) und der Größe einer Person ergibt. Der BMI ist definiert als die Körpermasse geteilt durch das Quadrat der Körpergröße und wird in der Einheit kg/m2 ausgedrückt, die sich aus der Masse in Kilogramm und der Größe in Metern ergibt.",
@@ -29,7 +52,7 @@
   "bmiResultBtnDetails": "BMI-Details anzeigen",
   "bmiResultToastSaveBMI": "In Ihrer Historie gespeichert",
 
-  "bmiHistoryBtnDeleteHistory": "Löschen Sie Ihre Historie",
+  "bmiHistoryBtnDeleteHistory": "BMI-Verlauf löschen ",
   "bmiHistoryToastDeleteHistory": "BMI-Verlauf gelöscht",
 
   "settingsBtnConfigUnits": "Einheiten konfigurieren",
