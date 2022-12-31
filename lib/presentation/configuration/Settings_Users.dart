@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 import '../BaseAppBar.dart';
@@ -68,7 +69,7 @@ class _SettingsUserState extends State<Settings_Users> {
     var nameController = TextEditingController();
     return Scaffold(
         appBar: BaseAppBar(
-          title: Text('User Settings'),
+          title: Text(AppLocalizations.of(context)!.baseAppBarSettingsUser),
           appBar: AppBar(),
         ), // body is the majority of the screen.
         body: Container(
@@ -82,7 +83,7 @@ class _SettingsUserState extends State<Settings_Users> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Active User: '),
+                        Text(AppLocalizations.of(context)!.settingsUserTextActiveUser),
                         SizedBox(width: 20),
                         DropdownButton(
                             value: _activeUser,
@@ -105,23 +106,23 @@ class _SettingsUserState extends State<Settings_Users> {
                     ElevatedButton(onPressed: () => showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Add User'),
+                          title: Text(AppLocalizations.of(context)!.settingsUserBtnAddUser),
                           content: TextField(
                             controller: nameController,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
-                              hintText: 'Enter a name')
+                              hintText: AppLocalizations.of(context)!.settingsUserTextInputName)
                           ),
                           actions: [
                             TextButton(
                                 onPressed: () => Navigator.pop(context, 'Cancel') ,
-                                child: const Text('Cancel')),
+                                child: Text(AppLocalizations.of(context)!.settingsUserBtnCancel)),
                             TextButton(
                                 onPressed: () => [_saveUsers(nameController.text),Navigator.pop(context, 'OK')],
-                                child: const Text('OK'))
+                                child: Text(AppLocalizations.of(context)!.settingsUserBtnOK))
                           ],
                         )),
-                        child: Text('Add User', style: TextStyle(fontSize: 20)))
+                        child: Text(AppLocalizations.of(context)!.settingsUserBtnAddUser, style: TextStyle(fontSize: 20)))
                   ],
                 )
             )

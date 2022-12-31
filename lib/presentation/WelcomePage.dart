@@ -1,5 +1,6 @@
 import 'package:bmi/presentation/BmiCalculator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'BaseAppBar.dart';
 
@@ -10,7 +11,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: Text('Welcome Page'),
+        title: Text(AppLocalizations.of(context)!.baseAppBarWelcomePage),
         appBar: AppBar(),
       ),
       // body is the majority of the screen.
@@ -19,10 +20,7 @@ class WelcomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-                  child: Text('Body mass index (BMI) is a value derived from the mass (weight) '
-                      'and height of a person. The BMI is defined as the body mass divided by '
-                      'the square of the body height, and is expressed in units of kg/m2, '
-                      'resulting from mass in kilograms and height in metres.')),
+                  child: Text(AppLocalizations.of(context)!.welcomePageText)),
         ElevatedButton(
           onPressed: () {
             Navigator.push(
@@ -30,7 +28,7 @@ class WelcomePage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const BmiCalculator()),
             );
           },
-          child: Text('Open BMI Calculator', style: TextStyle(fontSize: 20)),
+          child: Text(AppLocalizations.of(context)!.welcomePageBtn, style: TextStyle(fontSize: 20)),
         ),
         ],
       ),

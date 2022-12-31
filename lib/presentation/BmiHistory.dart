@@ -3,6 +3,7 @@ import 'package:bmi/domain/BmiEntry.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 import 'BaseAppBar.dart';
@@ -40,7 +41,7 @@ class _BmiHistoryState extends State<BmiHistory>{
 
     return Scaffold(
       appBar: BaseAppBar(
-        title: Text('BMI History of $_activeUser'),
+        title: Text(AppLocalizations.of(context)!.baseAppBarBMIHistory(_activeUser!)),
         appBar: AppBar(),
       ),
       body: Container(
@@ -65,10 +66,10 @@ class _BmiHistoryState extends State<BmiHistory>{
               ElevatedButton(onPressed: () async => {
                 await BmiRepository.instance.deleteUserBmiEntries(_activeUser!),
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text("Deleted to your History"),
+                  content: Text(AppLocalizations.of(context)!.bmiHistoryToastDeleteHistory),
                 )),
                 _loadData()
-              }, child: Text('Delete History')),
+              }, child: Text(AppLocalizations.of(context)!.bmiHistoryBtnDeleteHistory)),
             ],
           ),
         )

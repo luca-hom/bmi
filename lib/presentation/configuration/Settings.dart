@@ -1,9 +1,9 @@
 import 'package:bmi/presentation/configuration/Settings_Users.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../BaseAppBar.dart';
-import '../BmiCalculator.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -13,7 +13,7 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: Text('Settings'),
+        title: Text(AppLocalizations.of(context)!.baseAppBarSettings),
         appBar: AppBar(),
       ),      // body is the majority of the screen.
       body: Column(
@@ -28,7 +28,7 @@ class Settings extends StatelessWidget {
                     onPressed: () {
 
                     },
-                    child: Text('Configure Units', style: TextStyle(fontSize: 20)),
+                    child: Text(AppLocalizations.of(context)!.settingsBtnConfigUnits, style: TextStyle(fontSize: 20)),
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -37,7 +37,7 @@ class Settings extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => const Settings_Users()),
                       );
                     },
-                    child: Text('Configure Users', style: TextStyle(fontSize: 20)),
+                    child: Text(AppLocalizations.of(context)!.settingsBtnConfigUsers, style: TextStyle(fontSize: 20)),
                   ),
                 ]
               ),

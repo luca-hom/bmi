@@ -1,9 +1,9 @@
-
 import 'package:bmi/application/BmiUtil.dart';
 import 'package:bmi/data/BmiRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../domain/BmiEntry.dart';
 import 'BaseAppBar.dart';
@@ -49,7 +49,7 @@ class _BmiResultState extends State<BmiResult> {
 
     return Scaffold(
       appBar: BaseAppBar(
-        title: Text('BMI Result'),
+        title: Text(AppLocalizations.of(context)!.baseAppBarBMIResult),
         appBar: AppBar(),
       ),
       body: Column(
@@ -60,41 +60,41 @@ class _BmiResultState extends State<BmiResult> {
                 TextFormField(
                   readOnly: true,
                   initialValue: widget.weight,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Weight (kg)',
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    labelText: AppLocalizations.of(context)!.bmiResultTextWeight,
                   ),
                 ),
                 TextFormField(
                   readOnly: true,
                   initialValue: widget.height,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Height (cm)',
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    labelText: AppLocalizations.of(context)!.bmiResultTextHeight,
                   ),
                 ),
                 TextFormField(
                   readOnly: true,
                   initialValue: result.toStringAsFixed(2),
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'BMI Result',
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    labelText: AppLocalizations.of(context)!.bmiResultTextResult,
                   ),
                 ),
                 TextFormField(
                   readOnly: true,
                   initialValue: resultRating.toString() ,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'BMI Rating',
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    labelText: AppLocalizations.of(context)!.bmiResultTextRating,
                   ),
                 ),
                 TextFormField(
                   readOnly: true,
                   controller: TextEditingController(text: _activeUser),
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Active User',
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    labelText: AppLocalizations.of(context)!.bmiResultTextUser,
                   ),
                 ),
                 SizedBox(height: 50),
@@ -109,11 +109,11 @@ class _BmiResultState extends State<BmiResult> {
                             value: result, date: DateTime.now().toIso8601String())
                       ),
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text("Saved to your History"),
+                    content: Text(AppLocalizations.of(context)!.bmiResultToastSaveBMI),
                     )),
-                    }, child: Text('Save my BMI Data')),
+                    }, child: Text(AppLocalizations.of(context)!.bmiResultBtnSaveBMI)),
                     SizedBox(width: 20),
-                    ElevatedButton(onPressed: () => {}, child: Text('Show BMI Details'))
+                    ElevatedButton(onPressed: () => {}, child: Text(AppLocalizations.of(context)!.bmiResultBtnDetails))
                   ],
                 )
               ],

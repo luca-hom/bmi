@@ -1,5 +1,6 @@
 import 'package:bmi/presentation/BmiResult.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'BaseAppBar.dart';
 
@@ -13,7 +14,7 @@ class BmiCalculator extends StatelessWidget {
 
     return Scaffold(
         appBar: BaseAppBar(
-          title: Text('BMI Calculator'),
+          title: Text(AppLocalizations.of(context)!.baseAppBarBMICalculator),
           appBar: AppBar(),
         ),
         body: Column(
@@ -23,17 +24,17 @@ class BmiCalculator extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: weightController,
-                    decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Enter Weight (kg)'
+                    decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: AppLocalizations.of(context)!.bmiCalculatorInputWeight
                     ),
                     keyboardType: TextInputType.number,
                   ),
                   TextFormField(
                     controller: heightController,
-                    decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Enter Height (cm)'
+                    decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: AppLocalizations.of(context)!.bmiCalculatorInputHeight
                     ),
                     keyboardType: TextInputType.number,
                   )
@@ -51,7 +52,7 @@ class BmiCalculator extends StatelessWidget {
                         onPressed: () => {
                           weightController.clear(), heightController.clear()
                         },
-                        child: Text('Clear Input'),
+                        child: Text(AppLocalizations.of(context)!.bmiCalculatorBtnClear),
                       ),
                       ElevatedButton(
                         onPressed: () => {
@@ -61,7 +62,7 @@ class BmiCalculator extends StatelessWidget {
                                 MaterialPageRoute(builder: (context) => BmiResult(weight: weightController.text, height: heightController.text)))
                           }
                         },
-                        child: Text('Calculate BMI'),
+                        child: Text(AppLocalizations.of(context)!.bmiCalculatorBtnCalculateBMI),
                       )
                     ]
                 ),

@@ -1,0 +1,43 @@
+{
+  "baseAppBarWelcomePage": "Welcome Page",
+  "baseAppBarBMICalculator": "BMI Calculator",
+  "baseAppBarBMIResult": "BMI Result",
+  "baseAppBarBMIHistory": "BMI History of {NAME}",
+  "@baseAppBarBMIHistory": {
+    "description": "BMI History Bar with your name",
+    "placeholders": {
+      "NAME": {}
+    }
+  },
+  "baseAppBarSettings": "Settings",
+  "baseAppBarSettingsUser": "User Settings",
+
+  "welcomePageBtn": "Open BMI Calculator",
+  "welcomePageText": "Body mass index (BMI) is a value derived from the mass (weight) and height of a person. The BMI is defined as the body mass divided by the square of the body height, and is expressed in units of kg/m2, resulting from mass in kilograms and height in metres.",
+
+  "bmiCalculatorInputWeight": "Enter Weight (kg)",
+  "bmiCalculatorInputHeight": "Enter Height (cm)",
+  "bmiCalculatorBtnClear": "Clear Input",
+  "bmiCalculatorBtnCalculateBMI": "Calculate BMI",
+
+  "bmiResultTextWeight": "Weight (kg)",
+  "bmiResultTextHeight": "Height (cm)",
+  "bmiResultTextResult": "BMI Result",
+  "bmiResultTextRating": "BMI Rating",
+  "bmiResultTextUser": "Active User",
+  "bmiResultBtnSaveBMI": "Save my BMI Data",
+  "bmiResultBtnDetails": "Show BMI Details",
+  "bmiResultToastSaveBMI": "Saved to your History",
+
+  "bmiHistoryBtnDeleteHistory": "Delete your History",
+  "bmiHistoryToastDeleteHistory": "Deleted your BMI History!",
+
+  "settingsBtnConfigUnits": "Configure Units",
+  "settingsBtnConfigUsers": "Configure Users",
+
+  "settingsUserBtnAddUser": "Add User",
+  "settingsUserTextActiveUser": "Active User:",
+  "settingsUserTextInputName": "Enter a name",
+  "settingsUserBtnCancel": "Cancel",
+  "settingsUserBtnOK": "OK"
+}
