@@ -36,7 +36,7 @@
   "settingsBtnConfigUsers": "Configure Users",
 
   "settingsUserBtnAddUser": "Add User",
-  "settingsUserTextActiveUser": "Active User:",
+  "settingsUserTextActiveUser": "Active User: ",
   "settingsUserTextInputName": "Enter a name",
   "settingsUserBtnCancel": "Cancel",
   "settingsUserBtnOK": "OK"

@@ -1,0 +1,43 @@
+{
+  "baseAppBarWelcomePage": "Willkommensseite",
+  "baseAppBarBMICalculator": "BMI-Rechner",
+  "baseAppBarBMIResult": "BMI-Ergebnis",
+  "baseAppBarBMIHistory": "{NAME}'s BMI-Verlauf",
+  "@baseAppBarBMIHistory": {
+    "description": "BMI History Bar mit Ihrem Namen",
+    "placeholder": {
+      "NAME": {}
+    }
+  },
+  "baseAppBarSettings": "Einstellungen",
+  "baseAppBarSettingsUser": "Benutzereinstellungen",
+
+  "welcomePageBtn": "BMI-Rechner öffnen",
+  "welcomePageText": "Der Body-Mass-Index (BMI) ist ein Wert, der sich aus der Masse (Gewicht) und der Größe einer Person ergibt. Der BMI ist definiert als die Körpermasse geteilt durch das Quadrat der Körpergröße und wird in der Einheit kg/m2 ausgedrückt, die sich aus der Masse in Kilogramm und der Größe in Metern ergibt.",
+
+  "bmiCalculatorInputWeight": "Gewicht eingeben (kg)",
+  "bmiCalculatorInputHeight": "Höhe eingeben (cm)",
+  "bmiCalculatorBtnClear": "Eingabe löschen",
+  "bmiCalculatorBtnCalculateBMI": "BMI berechnen",
+
+  "bmiResultTextWeight": "Gewicht (kg)",
+  "bmiResultTextHeight": "Größe (cm)",
+  "bmiResultTextResult": "BMI-Ergebnis",
+  "bmiResultTextRating": "BMI Bewertung",
+  "bmiResultTextUser": "Aktiver Benutzer",
+  "bmiResultBtnSaveBMI": "Ergebnis speichern",
+  "bmiResultBtnDetails": "BMI-Details anzeigen",
+  "bmiResultToastSaveBMI": "In Ihrer Historie gespeichert",
+
+  "bmiHistoryBtnDeleteHistory": "Löschen Sie Ihre Historie",
+  "bmiHistoryToastDeleteHistory": "BMI-Verlauf gelöscht",
+
+  "settingsBtnConfigUnits": "Einheiten konfigurieren",
+  "settingsBtnConfigUsers": "Benutzer konfigurieren",
+
+  "settingsUserBtnAddUser": "Benutzer hinzufügen",
+  "settingsUserTextActiveUser": "Aktiver Benutzer: ",
+  "settingsUserTextInputName": "Geben Sie einen Namen ein",
+  "settingsUserBtnCancel": "Abbrechen",
+  "settingsUserBtnOK": "OK"
+}
