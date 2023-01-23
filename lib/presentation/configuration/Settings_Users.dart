@@ -118,7 +118,12 @@ class _SettingsUserState extends State<Settings_Users> {
                                 onPressed: () => Navigator.pop(context, 'Cancel') ,
                                 child: Text(AppLocalizations.of(context)!.settingsUserBtnCancel)),
                             TextButton(
-                                onPressed: () => [_saveUsers(nameController.text),Navigator.pop(context, 'OK')],
+                                onPressed: () => [_saveUsers(nameController.text),
+                                  _saveActiveUser(nameController.text),
+                                  _loadUsers(),
+                                  _loadActiveUser(),
+                                  Navigator.pop(context, 'OK')
+                                ],
                                 child: Text(AppLocalizations.of(context)!.settingsUserBtnOK))
                           ],
                         )),

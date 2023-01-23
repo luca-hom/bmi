@@ -16,7 +16,7 @@ class BmiHistory extends StatefulWidget {
 }
 
 class _BmiHistoryState extends State<BmiHistory>{
-  String? _activeUser;
+  String? _activeUser = '';
   List<BmiEntry> _bmiEntries = [];
 
 
